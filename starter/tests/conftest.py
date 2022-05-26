@@ -5,7 +5,7 @@ import numpy as np
 
 from sklearn.model_selection import train_test_split
 
-from starter.ml.data import process_data
+from starter.starter.ml.data import process_data
 
 
 @pytest.fixture(scope='session')

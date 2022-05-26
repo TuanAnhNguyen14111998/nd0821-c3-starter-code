@@ -1,9 +1,10 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-from starter.ml.model import load_model
-from starter.ml.model import train_model, inference
-from starter.ml.model import compute_model_metrics
+from starter.starter.ml.model import load_model
+from starter.starter.ml.model import train_model, inference
+from starter.starter.ml.model import compute_model_metrics
+
 
 def test_load_model(root_path):
     model = load_model(root_path, "rfc_model.pkl")
