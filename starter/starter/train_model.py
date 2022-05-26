@@ -1,14 +1,18 @@
 # Script to train machine learning model.
 # Add the necessary imports for the starter code.
 import pandas as pd
+import os
 from sklearn.model_selection import train_test_split
 
 from ml.data import process_data
 from ml.model import train_model, inference, compute_model_metrics
 import pickle
 
+# Get root path to load files requirement.
+root_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+
 # Add code to load in the data.
-data = pd.read_csv('../data/census_clean.csv')
+data = pd.read_csv(f'{root_path}/data/census_clean.csv')
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20, random_state=42)
@@ -23,6 +27,7 @@ cat_features = [
     "sex",
     "native-country",
 ]
+
 X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label="salary", training=True
 )
@@ -42,16 +47,16 @@ print("Precision: ", precision)
 print("Recall: ", recall)
 print("FBeta: ", fbeta)
 
-with open('../model/rfc_model.pkl', 'wb') as pickle_file:
+with open(f'{root_path}/model/rfc_model.pkl', 'wb') as pickle_file:
     pickle.dump(rfc_model, pickle_file)
 
-with open('../model/encoder.pkl', 'wb') as pickle_file:
+with open(f'{root_path}/model/encoder.pkl', 'wb') as pickle_file:
     pickle.dump(encoder, pickle_file)
 
-with open('../model/lb.pkl', 'wb') as pickle_file:
+with open(f'{root_path}/model/lb.pkl', 'wb') as pickle_file:
     pickle.dump(lb, pickle_file)
 
-with open('../model/metrics.txt', "w") as metrics_file:
+with open(f'{root_path}/model/metrics.txt', "w") as metrics_file:
     metrics_file.write(f"Precision: {precision}\n")
     metrics_file.write(f"Recall: {recall}\n")
     metrics_file.write(f"FBeta: {fbeta}\n")

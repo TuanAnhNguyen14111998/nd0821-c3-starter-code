@@ -1,3 +1,6 @@
+import os
+import pickle
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
@@ -64,3 +67,10 @@ def inference(model, X):
     preds = model.predict(X)
 
     return preds
+
+
+def load_model(root_path, model_name):
+    with open(os.path.join(root_path, "model", model_name), "rb") as f:
+        model = pickle.load(f)
+
+    return model
