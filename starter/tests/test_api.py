@@ -14,7 +14,8 @@ def test_welcome():
 
     response = json.loads(r.text)["welcome"]
 
-    assert response == "😁😁😁😁 Welcome to my app!!! 😁😁😁😁"
+    assert response == "😁😁😁😁 Welcome to my app!!! 😁😁😁😁.\
+        POST fields to /predict for running inference."
     assert r.status_code == 200
 
 
