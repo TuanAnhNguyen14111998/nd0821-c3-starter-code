@@ -57,7 +57,8 @@ class Output(BaseModel):
 # Define a GET on the specified endpoint.
 @app.get("/")
 async def welcome():
-    return {"welcome": "😁😁😁😁 Welcome to my app!!! 😁😁😁😁"}
+    return {"welcome": "😁😁😁😁 Welcome to my app!!! 😁😁😁😁.\
+        POST fields to /predict for running inference."}
 
 # Define a POST on the specified endpoint
 @app.post("/predict", response_model=Output, status_code=200)
